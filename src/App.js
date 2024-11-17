@@ -15,6 +15,9 @@ const addTashhandel=()=>{
   setAddTask([...addTask,taskobj])
   setTask("")
 }
+const deleteTask = (id) => {
+  setAddTask(addTask.filter((task) => task.id !== id));
+};
 return (
   <div>
     <h1>To Do List</h1>
@@ -26,7 +29,11 @@ return (
     <button onClick={addTashhandel}>Add</button>
 
     {addTask.map((e) => {
-      return <h1 key={e.id}>{e.text}</h1>;
+      return <div key={e.id}>{e.text}
+            <button onClick={() => deleteTask(e.id)}>Delete</button>
+
+      </div>;
+
     })}
   </div>
 );
